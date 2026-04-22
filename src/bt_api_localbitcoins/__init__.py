@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
-from bt_api_localbitcoins.exchange_data import (
-    LocalBitcoinsExchangeDataSpot,
-    LocalBitcoinsExchangeData,
-)
 from bt_api_localbitcoins.errors import LocalBitcoinsErrorTranslator
+from bt_api_localbitcoins.exchange_data import (
+    LocalBitcoinsExchangeData,
+    LocalBitcoinsExchangeDataSpot,
+)
 from bt_api_localbitcoins.feeds.live_localbitcoins.spot import LocalBitcoinsRequestDataSpot
 
 __all__ = [

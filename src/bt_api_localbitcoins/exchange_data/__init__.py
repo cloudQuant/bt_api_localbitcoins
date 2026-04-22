@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from bt_api_base.containers.exchanges.exchange_data import ExchangeData
 
-
 _FALLBACK_REST_PATHS = {
     "get_server_time": "GET /api/ecjson.php",
     "get_tick": "GET /bitcoinaverage/ticker-all-currencies/",
@@ -49,7 +48,7 @@ class LocalBitcoinsExchangeData(ExchangeData):
 
     def get_rest_path(self, key: str, **kwargs) -> str:
         if key not in self.rest_paths or self.rest_paths[key] == "":
-            raise ValueError(f"[{self.exchange_name}] REST path not found: {key}")
+            raise ValueError("REST path not found")
         path = self.rest_paths[key]
         if kwargs:
             for k, v in kwargs.items():

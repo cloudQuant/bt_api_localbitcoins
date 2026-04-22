@@ -1,8 +1,10 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from bt_api_base.containers.requestdatas.request_data import RequestData
+if TYPE_CHECKING:
+    from bt_api_base.containers.requestdatas.request_data import RequestData
+
 from bt_api_localbitcoins.feeds.live_localbitcoins.request_base import LocalBitcoinsRequestData
 
 

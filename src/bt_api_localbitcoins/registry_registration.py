@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from bt_api_base.registry import ExchangeRegistry
+
 from bt_api_base.balance_utils import simple_balance_handler as _localbitcoins_balance_handler
-from bt_api_base.registry import ExchangeRegistry
 
 from bt_api_localbitcoins.exchange_data import LocalBitcoinsExchangeDataSpot
 from bt_api_localbitcoins.feeds.live_localbitcoins.spot import LocalBitcoinsRequestDataSpot
