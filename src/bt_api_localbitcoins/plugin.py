@@ -12,9 +12,7 @@ from bt_api_localbitcoins import __version__
 from bt_api_localbitcoins.registry_registration import register_localbitcoins
 
 
-def register_plugin(
-    registry: type[ExchangeRegistry], runtime_factory: type[GatewayRuntimeRegistrar]
-) -> PluginInfo:
+def register_plugin(registry: type[ExchangeRegistry], runtime_factory: type[GatewayRuntimeRegistrar]) -> PluginInfo:
     register_localbitcoins(registry)
     return PluginInfo(
         name="bt_api_localbitcoins",

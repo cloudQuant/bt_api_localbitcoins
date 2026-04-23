@@ -26,18 +26,14 @@ class LocalBitcoinsRequestDataSpot(LocalBitcoinsRequestData):
         path, params, extra = self._get_tick(symbol, extra_data, **kwargs)
         return self.request(path, params, extra_data=extra)
 
-    async def async_get_tick(
-        self, symbol: Any, extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_tick(self, symbol: Any, extra_data: Any = None, **kwargs: Any) -> RequestData:
         path, params, extra = self._get_tick(symbol, extra_data, **kwargs)
         return await self.async_request(path, params, extra_data=extra)
 
     def get_ticker(self, symbol: Any, extra_data: Any = None, **kwargs: Any) -> RequestData:
         return self.get_tick(symbol, extra_data, **kwargs)
 
-    async def async_get_ticker(
-        self, symbol: Any, extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_ticker(self, symbol: Any, extra_data: Any = None, **kwargs: Any) -> RequestData:
         return await self.async_get_tick(symbol, extra_data, **kwargs)
 
     def get_exchange_info(self, extra_data: Any = None, **kwargs: Any) -> RequestData:
@@ -52,20 +48,14 @@ class LocalBitcoinsRequestDataSpot(LocalBitcoinsRequestData):
         path, params, extra = self._get_balance(extra_data, **kwargs)
         return self.request(path, params, extra_data=extra)
 
-    async def async_get_balance(
-        self, symbol: Any = None, extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_balance(self, symbol: Any = None, extra_data: Any = None, **kwargs: Any) -> RequestData:
         path, params, extra = self._get_balance(extra_data, **kwargs)
         return await self.async_request(path, params, extra_data=extra)
 
-    def get_account(
-        self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    def get_account(self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any) -> RequestData:
         path, params, extra = self._get_account(extra_data, **kwargs)
         return self.request(path, params, extra_data=extra)
 
-    async def async_get_account(
-        self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_account(self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any) -> RequestData:
         path, params, extra = self._get_account(extra_data, **kwargs)
         return await self.async_request(path, params, extra_data=extra)

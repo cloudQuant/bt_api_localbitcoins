@@ -29,9 +29,7 @@ class LocalBitcoinsOrderBookData(OrderBookData):
 
     def init_data(self) -> LocalBitcoinsOrderBookData:
         if not self.has_been_json_encoded:
-            self.orderbook_data = (
-                json.loads(self.orderbook_info) if isinstance(self.orderbook_info, str) else {}
-            )
+            self.orderbook_data = json.loads(self.orderbook_info) if isinstance(self.orderbook_info, str) else {}
             self.has_been_json_encoded = True
         if self.has_been_init_data:
             return self
