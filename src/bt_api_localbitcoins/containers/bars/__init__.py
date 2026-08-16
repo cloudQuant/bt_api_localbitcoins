@@ -1,4 +1,5 @@
 """Module-level docstring."""
+
 from __future__ import annotations
 
 import json
@@ -11,6 +12,7 @@ from bt_api_base.functions.utils import from_dict_get_float
 
 class LocalBitcoinsBarData(BarData):
     """Class LocalBitcoinsBarData"""
+
     def __init__(
         self,
         bar_info: str | dict[str, Any],
@@ -109,9 +111,11 @@ class LocalBitcoinsBarData(BarData):
 
 class LocalBitcoinsRequestBarData(LocalBitcoinsBarData):
     """Class LocalBitcoinsRequestBarData"""
+
     pass
 
 
 class LocalBitcoinsWssBarData(LocalBitcoinsBarData):
     """Class LocalBitcoinsWssBarData"""
+
     pass

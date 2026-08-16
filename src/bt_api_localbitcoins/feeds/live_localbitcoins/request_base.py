@@ -1,4 +1,5 @@
 """Module documentation"""
+
 from __future__ import annotations
 
 import hashlib
@@ -17,6 +18,7 @@ from bt_api_localbitcoins.exchange_data import LocalBitcoinsExchangeDataSpot
 
 class LocalBitcoinsRequestData(Feed):
     """Class LocalBitcoinsRequestData"""
+
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
         """__init__ method"""
         super().__init__(data_queue, **kwargs)

@@ -1,4 +1,5 @@
 """Module-level docstring."""
+
 from __future__ import annotations
 
 import json
@@ -10,6 +11,7 @@ from bt_api_base.containers.accounts.account import AccountData
 
 class LocalBitcoinsAccountData(AccountData):
     """Class LocalBitcoinsAccountData"""
+
     def __init__(
         self,
         account_info: str | dict[str, Any],
@@ -85,9 +87,11 @@ class LocalBitcoinsAccountData(AccountData):
 
 class LocalBitcoinsRequestAccountData(LocalBitcoinsAccountData):
     """Class LocalBitcoinsRequestAccountData"""
+
     pass
 
 
 class LocalBitcoinsWssAccountData(LocalBitcoinsAccountData):
     """Class LocalBitcoinsWssAccountData"""
+
     pass

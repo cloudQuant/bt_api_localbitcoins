@@ -1,4 +1,5 @@
 """Module-level docstring."""
+
 from __future__ import annotations
 
 from bt_api_base.containers.exchanges.exchange_data import ExchangeData
@@ -65,6 +66,7 @@ class LocalBitcoinsExchangeData(ExchangeData):
 
 class LocalBitcoinsExchangeDataSpot(LocalBitcoinsExchangeData):
     """Class LocalBitcoinsExchangeDataSpot"""
+
     def __init__(self) -> None:
         """__init__ method"""
         super().__init__()

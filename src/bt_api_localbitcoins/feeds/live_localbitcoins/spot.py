@@ -1,4 +1,5 @@
 """Module-level docstring."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
@@ -11,6 +12,7 @@ from bt_api_localbitcoins.feeds.live_localbitcoins.request_base import LocalBitc
 
 class LocalBitcoinsRequestDataSpot(LocalBitcoinsRequestData):
     """Class LocalBitcoinsRequestDataSpot"""
+
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
         """__init__ method"""
         kwargs.setdefault("exchange_name", "LOCALBITCOINS___SPOT")
