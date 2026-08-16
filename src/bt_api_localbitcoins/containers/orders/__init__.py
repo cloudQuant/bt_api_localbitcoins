@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import json
@@ -9,6 +10,7 @@ from bt_api_base.functions.utils import from_dict_get_float, from_dict_get_strin
 
 
 class LocalBitcoinsOrderData(OrderData):
+    """Class LocalBitcoinsOrderData"""
     def __init__(
         self,
         order_info: str | dict[str, Any],
@@ -16,6 +18,7 @@ class LocalBitcoinsOrderData(OrderData):
         asset_type: str,
         has_been_json_encoded: bool = False,
     ) -> None:
+        """__init__ method"""
         super().__init__(order_info, has_been_json_encoded)
         self.exchange_name = "LOCALBITCOINS"
         self.local_update_time = time.time()
@@ -33,6 +36,7 @@ class LocalBitcoinsOrderData(OrderData):
         self.has_been_init_data = False
 
     def init_data(self) -> "LocalBitcoinsOrderData":
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.order_data = (
                 json.loads(self.order_info) if isinstance(self.order_info, str) else {}
@@ -54,36 +58,47 @@ class LocalBitcoinsOrderData(OrderData):
         return self
 
     def get_exchange_name(self) -> str:
+        """get_exchange_name method"""
         return self.exchange_name or ""
 
     def get_symbol_name(self) -> str:
+        """get_symbol_name method"""
         return self.symbol_name or ""
 
     def get_asset_type(self) -> str:
+        """get_asset_type method"""
         return self.asset_type or ""
 
     def get_order_id(self) -> str | None:
+        """get_order_id method"""
         return self.order_id
 
     def get_side(self) -> str | None:
+        """get_side method"""
         return self.side
 
     def get_order_type(self) -> str | None:
+        """get_order_type method"""
         return self.order_type
 
     def get_price(self) -> float | None:
+        """get_price method"""
         return self.price
 
     def get_amount(self) -> float | None:
+        """get_amount method"""
         return self.amount
 
     def get_status(self) -> str | None:
+        """get_status method"""
         return self.status
 
 
 class LocalBitcoinsRequestOrderData(LocalBitcoinsOrderData):
+    """Class LocalBitcoinsRequestOrderData"""
     pass
 
 
 class LocalBitcoinsWssOrderData(LocalBitcoinsOrderData):
+    """Class LocalBitcoinsWssOrderData"""
     pass

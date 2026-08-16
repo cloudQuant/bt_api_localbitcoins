@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import json
@@ -8,6 +9,7 @@ from bt_api_base.containers.accounts.account import AccountData
 
 
 class LocalBitcoinsAccountData(AccountData):
+    """Class LocalBitcoinsAccountData"""
     def __init__(
         self,
         account_info: str | dict[str, Any],
@@ -15,6 +17,7 @@ class LocalBitcoinsAccountData(AccountData):
         asset_type: str,
         has_been_json_encoded: bool = False,
     ) -> None:
+        """__init__ method"""
         super().__init__(account_info, has_been_json_encoded)
         self.exchange_name = "LOCALBITCOINS"
         self.local_update_time = time.time()
@@ -28,6 +31,7 @@ class LocalBitcoinsAccountData(AccountData):
         self.has_been_init_data = False
 
     def init_data(self) -> "LocalBitcoinsAccountData":
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.account_data = (
                 json.loads(self.account_info) if isinstance(self.account_info, str) else {}
@@ -45,19 +49,24 @@ class LocalBitcoinsAccountData(AccountData):
         return self
 
     def get_exchange_name(self) -> str:
+        """get_exchange_name method"""
         return self.exchange_name or ""
 
     def get_symbol_name(self) -> str:
+        """get_symbol_name method"""
         return self.symbol_name or ""
 
     def get_asset_type(self) -> str:
+        """get_asset_type method"""
         return self.asset_type or ""
 
     def get_balances(self) -> list[Any]:
+        """get_balances method"""
         self.init_data()
         return self.balances
 
     def get_all_data(self) -> dict[str, Any]:
+        """get_all_data method"""
         if self.all_data is None:
             self.init_data()
             self.all_data = {
@@ -77,8 +86,10 @@ class LocalBitcoinsAccountData(AccountData):
 
 
 class LocalBitcoinsRequestAccountData(LocalBitcoinsAccountData):
+    """Class LocalBitcoinsRequestAccountData"""
     pass
 
 
 class LocalBitcoinsWssAccountData(LocalBitcoinsAccountData):
+    """Class LocalBitcoinsWssAccountData"""
     pass

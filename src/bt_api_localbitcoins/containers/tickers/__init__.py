@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import json
@@ -22,6 +23,7 @@ class LocalBitcoinsTickerData(TickerData):
         asset_type: str,
         has_been_json_encoded: bool = False,
     ) -> None:
+        """__init__ method"""
         super().__init__(ticker_info, has_been_json_encoded)
         self.exchange_name = "LOCALBITCOINS"
         self.local_update_time = time.time()
@@ -46,6 +48,7 @@ class LocalBitcoinsTickerData(TickerData):
         self.has_been_init_data = False
 
     def init_data(self) -> "LocalBitcoinsTickerData":
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.ticker_data = (
                 json.loads(self.ticker_info) if isinstance(self.ticker_info, str) else {}
@@ -74,6 +77,7 @@ class LocalBitcoinsTickerData(TickerData):
         return self
 
     def get_all_data(self) -> dict[str, Any]:
+        """get_all_data method"""
         if self.all_data is None:
             self.init_data()
             self.all_data = {
@@ -104,52 +108,68 @@ class LocalBitcoinsTickerData(TickerData):
         return str(self.__str__())
 
     def get_exchange_name(self) -> str:
+        """get_exchange_name method"""
         return str(self.exchange_name)
 
     def get_local_update_time(self) -> float:
+        """get_local_update_time method"""
         return float(self.local_update_time)
 
     def get_symbol_name(self) -> str:
+        """get_symbol_name method"""
         return str(self.symbol_name)
 
     def get_ticker_symbol_name(self) -> str | None:
+        """get_ticker_symbol_name method"""
         val = self.ticker_symbol_name
         return None if val is None else str(val)
 
     def get_asset_type(self) -> str:
+        """get_asset_type method"""
         return str(self.asset_type)
 
     def get_server_time(self) -> float | None:
+        """get_server_time method"""
         return self.server_time
 
     def get_bid_price(self) -> float | None:
+        """get_bid_price method"""
         return self.bid_price
 
     def get_ask_price(self) -> float | None:
+        """get_ask_price method"""
         return self.ask_price
 
     def get_bid_volume(self) -> float | None:
+        """get_bid_volume method"""
         return self.bid_volume
 
     def get_ask_volume(self) -> float | None:
+        """get_ask_volume method"""
         return self.ask_volume
 
     def get_last_price(self) -> float | None:
+        """get_last_price method"""
         return self.last_price
 
     def get_daily_change(self) -> float | None:
+        """get_daily_change method"""
         return self.daily_change
 
     def get_daily_change_percentage(self) -> float | None:
+        """get_daily_change_percentage method"""
         return self.daily_change_percentage
 
     def get_volume(self) -> float | None:
+        """get_volume method"""
         return self.volume
 
     def get_high(self) -> float | None:
+        """get_high method"""
         return self.high
 
     def get_low(self) -> float | None:
+        """get_low method"""
         return self.low
 
 

@@ -34,6 +34,7 @@ class TestLocalBitcoinsTickerData:
         assert ticker.has_been_init_data is True
 
     def test_init_data_parses_nested_symbol_payload_and_getters(self, monkeypatch):
+        """test_init_data_parses_nested_symbol_payload_and_getters method"""
         monkeypatch.setattr("bt_api_localbitcoins.containers.tickers.time.time", lambda: 789.0)
         data = {
             "btc_usd": {
@@ -80,6 +81,7 @@ class TestLocalBitcoinsTickerData:
         assert "LOCALBITCOINS" in result
 
     def test_request_and_wss_subclasses_parse_string_and_dict_payloads(self, monkeypatch):
+        """test_request_and_wss_subclasses_parse_string_and_dict_payloads method"""
         monkeypatch.setattr("bt_api_localbitcoins.containers.tickers.time.time", lambda: 654.0)
         request = LocalBitcoinsRequestTickerData(
             json.dumps({"btc_usd": {"avg": 1.0, "bid": 0.9, "ask": 1.1, "volume_btc": 2.5}}),

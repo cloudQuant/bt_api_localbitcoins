@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 from bt_api_base.containers.exchanges.exchange_data import ExchangeData
@@ -22,6 +23,7 @@ class LocalBitcoinsExchangeData(ExchangeData):
     """Base exchange data for LocalBitcoins (P2P, HMAC-SHA256)."""
 
     def __init__(self) -> None:
+        """__init__ method"""
         super().__init__()
         self.exchange_name = "LOCALBITCOINS___SPOT"
         self.asset_type = "SPOT"
@@ -35,19 +37,24 @@ class LocalBitcoinsExchangeData(ExchangeData):
 
     @staticmethod
     def get_symbol(symbol):
+        """get_symbol method"""
         return symbol.lower().replace("-", "_").replace("/", "_")
 
     @staticmethod
     def get_reverse_symbol(symbol):
+        """get_reverse_symbol method"""
         return symbol.upper().replace("_", "-")
 
     def get_period(self, period: str) -> str:
+        """get_period method"""
         return self.kline_periods.get(period, period)
 
     def get_reverse_period(self, period: str) -> str:
+        """get_reverse_period method"""
         return self.reverse_kline_periods.get(period, period)
 
     def get_rest_path(self, key: str, **kwargs) -> str:
+        """get_rest_path method"""
         if key not in self.rest_paths or self.rest_paths[key] == "":
             raise ValueError(f"[{self.exchange_name}] REST path not found: {key}")
         path = self.rest_paths[key]
@@ -58,6 +65,8 @@ class LocalBitcoinsExchangeData(ExchangeData):
 
 
 class LocalBitcoinsExchangeDataSpot(LocalBitcoinsExchangeData):
+    """Class LocalBitcoinsExchangeDataSpot"""
     def __init__(self) -> None:
+        """__init__ method"""
         super().__init__()
         self.asset_type = "SPOT"

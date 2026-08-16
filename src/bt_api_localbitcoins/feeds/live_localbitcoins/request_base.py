@@ -1,3 +1,4 @@
+"""Module documentation"""
 from __future__ import annotations
 
 import hashlib
@@ -14,7 +15,9 @@ from bt_api_localbitcoins.exchange_data import LocalBitcoinsExchangeDataSpot
 
 
 class LocalBitcoinsRequestData(Feed):
+    """Class LocalBitcoinsRequestData"""
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
+        """__init__ method"""
         super().__init__(data_queue, **kwargs)
         self.data_queue = data_queue
         self.asset_type = kwargs.get("asset_type", "SPOT")
@@ -27,6 +30,7 @@ class LocalBitcoinsRequestData(Feed):
         self.rest_url = self._params.rest_url
 
     def push_data_to_queue(self, data: Any) -> None:
+        """push_data_to_queue method"""
         if self.data_queue is not None:
             self.data_queue.put(data)
 
@@ -72,6 +76,7 @@ class LocalBitcoinsRequestData(Feed):
         extra_data: Any = None,
         timeout: Any = 10,
     ) -> RequestData:
+        """request method"""
         if params is None:
             params = {}
         method, endpoint = path.split(" ", 1)
@@ -99,6 +104,7 @@ class LocalBitcoinsRequestData(Feed):
         extra_data: Any = None,
         timeout: Any = 5,
     ) -> RequestData:
+        """async_request method"""
         if params is None:
             params = {}
         method, endpoint = path.split(" ", 1)
@@ -119,6 +125,7 @@ class LocalBitcoinsRequestData(Feed):
         return RequestData(res, extra_data or {})
 
     def async_callback(self, request_data: Any) -> None:
+        """async_callback method"""
         if request_data is not None:
             self.push_data_to_queue(request_data)
 
