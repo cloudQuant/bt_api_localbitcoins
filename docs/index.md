@@ -11,9 +11,17 @@ pip install bt_api_localbitcoins
 ```
 
 ```python
-from bt_api_localbitcoins import LocalbitcoinsApi
-feed = LocalbitcoinsApi(api_key="your_key", secret="your_secret")
-ticker = feed.get_ticker("BTCUSDT")
+from bt_api_py import BtApi
+
+api = BtApi(exchange_kwargs={
+    "LOCALBITCOINS___SPOT": {
+        "api_key": "your_key",
+        "secret": "your_secret",
+    }
+})
+
+ticker = api.get_tick("LOCALBITCOINS___SPOT", "BTCUSD")
+print(ticker)
 ```
 
 ## 中文
@@ -27,9 +35,17 @@ pip install bt_api_localbitcoins
 ```
 
 ```python
-from bt_api_localbitcoins import LocalbitcoinsApi
-feed = LocalbitcoinsApi(api_key="your_key", secret="your_secret")
-ticker = feed.get_ticker("BTCUSDT")
+from bt_api_py import BtApi
+
+api = BtApi(exchange_kwargs={
+    "LOCALBITCOINS___SPOT": {
+        "api_key": "your_key",
+        "secret": "your_secret",
+    }
+})
+
+ticker = api.get_tick("LOCALBITCOINS___SPOT", "BTCUSD")
+print(ticker)
 ```
 
 ## API Reference

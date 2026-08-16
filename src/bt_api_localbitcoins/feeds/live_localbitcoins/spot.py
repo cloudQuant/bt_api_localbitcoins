@@ -1,9 +1,11 @@
 """Module-level docstring."""
 from __future__ import annotations
 
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from bt_api_base.containers.requestdatas.request_data import RequestData
+if TYPE_CHECKING:
+    from bt_api_base.containers.requestdatas.request_data import RequestData
+
 from bt_api_localbitcoins.feeds.live_localbitcoins.request_base import LocalBitcoinsRequestData
 
 
@@ -30,9 +32,7 @@ class LocalBitcoinsRequestDataSpot(LocalBitcoinsRequestData):
         path, params, extra = self._get_tick(symbol, extra_data, **kwargs)
         return self.request(path, params, extra_data=extra)
 
-    async def async_get_tick(
-        self, symbol: Any, extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_tick(self, symbol: Any, extra_data: Any = None, **kwargs: Any) -> RequestData:
         """async_get_tick method"""
         path, params, extra = self._get_tick(symbol, extra_data, **kwargs)
         return await self.async_request(path, params, extra_data=extra)
@@ -41,9 +41,7 @@ class LocalBitcoinsRequestDataSpot(LocalBitcoinsRequestData):
         """get_ticker method"""
         return self.get_tick(symbol, extra_data, **kwargs)
 
-    async def async_get_ticker(
-        self, symbol: Any, extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_ticker(self, symbol: Any, extra_data: Any = None, **kwargs: Any) -> RequestData:
         """async_get_ticker method"""
         return await self.async_get_tick(symbol, extra_data, **kwargs)
 
@@ -62,23 +60,17 @@ class LocalBitcoinsRequestDataSpot(LocalBitcoinsRequestData):
         path, params, extra = self._get_balance(extra_data, **kwargs)
         return self.request(path, params, extra_data=extra)
 
-    async def async_get_balance(
-        self, symbol: Any = None, extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_balance(self, symbol: Any = None, extra_data: Any = None, **kwargs: Any) -> RequestData:
         """async_get_balance method"""
         path, params, extra = self._get_balance(extra_data, **kwargs)
         return await self.async_request(path, params, extra_data=extra)
 
-    def get_account(
-        self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    def get_account(self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any) -> RequestData:
         """get_account method"""
         path, params, extra = self._get_account(extra_data, **kwargs)
         return self.request(path, params, extra_data=extra)
 
-    async def async_get_account(
-        self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any
-    ) -> RequestData:
+    async def async_get_account(self, symbol: Any = "ALL", extra_data: Any = None, **kwargs: Any) -> RequestData:
         """async_get_account method"""
         path, params, extra = self._get_account(extra_data, **kwargs)
         return await self.async_request(path, params, extra_data=extra)

@@ -35,7 +35,7 @@ class LocalBitcoinsBarData(BarData):
         self.volume: float | None = None
         self.has_been_init_data = False
 
-    def init_data(self) -> "LocalBitcoinsBarData":
+    def init_data(self) -> LocalBitcoinsBarData:
         """init_data method"""
         if not self.has_been_json_encoded:
             self.bar_data = json.loads(self.bar_info) if isinstance(self.bar_info, str) else {}

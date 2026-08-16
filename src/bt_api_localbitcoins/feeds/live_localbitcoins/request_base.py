@@ -7,10 +7,11 @@ import time
 from typing import Any
 from urllib.parse import urlencode
 
-from bt_api_base.feeds.feed import Feed
-from bt_api_base.feeds.capability import Capability
 from bt_api_base.containers.requestdatas.request_data import RequestData
+from bt_api_base.feeds.capability import Capability
+from bt_api_base.feeds.feed import Feed
 from bt_api_base.functions.utils import update_extra_data
+
 from bt_api_localbitcoins.exchange_data import LocalBitcoinsExchangeDataSpot
 
 
@@ -41,18 +42,14 @@ class LocalBitcoinsRequestData(Feed):
             Capability.GET_EXCHANGE_INFO,
         }
 
-    def _generate_signature(
-        self, method: Any, path: Any, params_str: Any = "", body_str: Any = ""
-    ) -> tuple[str, str]:
+    def _generate_signature(self, method: Any, path: Any, params_str: Any = "", body_str: Any = "") -> tuple[str, str]:
         nonce = str(int(time.time() * 1000))
         msg = f"{nonce}{self.api_key}{path}{params_str}{body_str}"
         secret = self.api_secret or ""
         sig = hmac.new(secret.encode(), msg.encode(), hashlib.sha256).hexdigest()
         return nonce, sig
 
-    def _get_headers(
-        self, method: Any = "GET", path: Any = "", params: Any = None
-    ) -> dict[str, str]:
+    def _get_headers(self, method: Any = "GET", path: Any = "", params: Any = None) -> dict[str, str]:
         headers: dict[str, str] = {"Content-Type": "application/json", "Accept": "application/json"}
         if self.api_key and self.api_secret and "/api/" in path:
             qs = urlencode(params) if params else ""
@@ -145,9 +142,7 @@ class LocalBitcoinsRequestData(Feed):
         )
         return path, {}, extra_data
 
-    def _get_exchange_info(
-        self, extra_data: Any = None, **kwargs: Any
-    ) -> tuple[str, dict[str, Any], dict[str, Any]]:
+    def _get_exchange_info(self, extra_data: Any = None, **kwargs: Any) -> tuple[str, dict[str, Any], dict[str, Any]]:
         path = self._params.get_rest_path("get_exchange_info")
         extra_data = update_extra_data(
             extra_data,
@@ -161,9 +156,7 @@ class LocalBitcoinsRequestData(Feed):
         )
         return path, {}, extra_data
 
-    def _get_server_time(
-        self, extra_data: Any = None, **kwargs: Any
-    ) -> tuple[str, dict[str, Any], dict[str, Any]]:
+    def _get_server_time(self, extra_data: Any = None, **kwargs: Any) -> tuple[str, dict[str, Any], dict[str, Any]]:
         path = self._params.get_rest_path("get_server_time")
         extra_data = update_extra_data(
             extra_data,
@@ -175,9 +168,7 @@ class LocalBitcoinsRequestData(Feed):
         )
         return path, {}, extra_data
 
-    def _get_balance(
-        self, extra_data: Any = None, **kwargs: Any
-    ) -> tuple[str, dict[str, Any], dict[str, Any]]:
+    def _get_balance(self, extra_data: Any = None, **kwargs: Any) -> tuple[str, dict[str, Any], dict[str, Any]]:
         path = self._params.get_rest_path("get_balance")
         extra_data = update_extra_data(
             extra_data,
@@ -190,9 +181,7 @@ class LocalBitcoinsRequestData(Feed):
         )
         return path, {}, extra_data
 
-    def _get_account(
-        self, extra_data: Any = None, **kwargs: Any
-    ) -> tuple[str, dict[str, Any], dict[str, Any]]:
+    def _get_account(self, extra_data: Any = None, **kwargs: Any) -> tuple[str, dict[str, Any], dict[str, Any]]:
         path = self._params.get_rest_path("get_account")
         extra_data = update_extra_data(
             extra_data,
